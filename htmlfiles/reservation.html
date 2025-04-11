@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking - Mang Vels Restaurant</title>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body style="font-family: 'Signika', sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-variation-settings: 'GRAD' 0; ">
+
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] shadow-md fixed w-full z-50 h-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo and Text Container -->
+                <a href="index.html" class="flex items-center space-x-3 sm:space-x-4">
+                    <img src="../images/mangvel.png" alt="Mang Vel Restaurant logo" class="h-16 sm:h-20">
+                    <span class="text-2xl font-semibold text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">MANG VEL'S RESTAURANT</span>
+                </a>
+    
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-toggle" class="lg:hidden p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+    
+                <!-- Desktop Menu -->
+                <ul class="hidden lg:flex justify-center space-x-6 w-full">
+                    <li><a href="../index.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Home</a></li>
+                    <li><a href="../menu.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Menu</a></li>
+                    <li><a href="about.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">About</a></li>
+                    <li><a href="service.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Services</a></li>
+    
+                    <!-- Promotions Dropdown -->
+                    <li class="relative" id="promotions-menu">
+                        <a href="#" class="text-white hover:text-gray-900 flex items-center space-x-2 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);" id="promotions-link">
+                            <span>Promotions</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white group-hover:text-gray-900 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <!-- Desktop Dropdown Menu -->
+                        <ul class="absolute left-0 hidden mt-2 space-y-2 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] shadow-lg " id="dropdown-menu">
+                            <li><a href="promo.html" class="block px-4 py-2 text-white hover:text-gray-900 font-semibold " style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Promos</a></li>
+                            <li><a href="giftcard.html" class="block px-4 py-2 text-white hover:text-gray-900 font-semibold"  style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Gift Cards</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="location.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Locations</a></li>
+                    <li><a href="contact.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu (Full Screen and Slide In Effect from Right) -->
+    <ul id="mobile-menu" class="hidden fixed inset-0 flex-col space-y-6 bg-white py-6 px-8 shadow-md lg:hidden transition-all duration-300 z-50 transform translate-x-full">
+        
+        <!-- Close Button (X) -->
+        <li>
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-gray-700 text-4xl">
+                &times; <!-- X icon -->
+            </button>
+        </li>
+    
+        <!-- Menu Items -->
+        <li class="px-4 py-2">
+            <a href="../index.html" class="text-gray-700 hover:text-gray-900 text-lg">Home</a>
+        </li>
+        <li class="px-4 py-2">
+            <a href="../menu.html" class="text-gray-700 hover:text-gray-900 text-lg">Menu</a>
+        </li>
+        <li class="px-4 py-2">
+            <a href="about.html" class="text-gray-700 hover:text-gray-900 text-lg">About</a>
+        </li>
+        <li class="px-4 py-2">
+            <a href="service.html" class="text-gray-700 hover:text-gray-900 text-lg">Services</a>
+        </li>
+    
+        <!-- Mobile Promotions Dropdown -->
+        <li class="relative px-4 py-2">
+            <a href="#" class="text-gray-700 hover:text-gray-900 flex items-center space-x-2" id="mobile-promotions-link">
+                <span class="text-lg">Promotions</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-700 group-hover:text-gray-900 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </a>
+            <!-- Mobile Dropdown Menu -->
+            <ul class="absolute left-0 hidden mt-2 space-y-2 bg-white shadow-lg" id="mobile-dropdown-menu">
+                <li><a href="promo.html" class="block px-4 py-2 text-gray-700 hover:text-gray-900">Promos</a></li>
+                <li><a href="giftcard.html" class="block px-4 py-2 text-gray-700 hover:text-gray-900">Gift Cards</a></li>
+            </ul>
+        </li>
+    
+        <li class="px-4 py-2">
+            <a href="location.html" class="text-gray-700 hover:text-gray-900 text-lg">Locations</a>
+        </li>
+        <li class="px-4 py-2">
+            <a href="contact.html" class="text-gray-700 hover:text-gray-900 text-lg">Contact</a>
+        </li>
+    
+    </ul>
+    
+    <!--NavBar End-->
+    
+    <section class=" flex items-center justify-center pt-36">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-6xl w-full flex flex-col md:flex-row transition-transform hover:scale-[1.01] duration-300 border-2 border-orange-300">
+          
+          <!-- Left side: Booking Form -->
+          <div class="md:w-2/3 w-full p-8">
+            <form class="space-y-5">
+              <div class="mb-6">
+                <h2 class="text-4xl font-extrabold text-gray-800">🍽️ Mang Vel's Reservation</h2>
+                <p class="text-sm text-gray-500 mt-1">Book your seat now and experience delightful meals!</p>
+              </div>
+      
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Date *</label>
+                  <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Time *</label>
+                  <input type="time" value="18:00" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+                </div>
+              </div>
+      
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">People *</label>
+                <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required>
+                  <option>1 person</option>
+                  <option>2 persons</option>
+                  <option>3 persons</option>
+                  <option selected>4 persons</option>
+                  <option>5+ persons</option>
+                </select>
+              </div>
+      
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">First name *</label>
+                    <input type="text" value="John Vel" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
+                    <input type="text" value="Llacuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+                  </div>
+                </div>
+        
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                    <input type="email" value="johnvel.llacuna.cvt@eac.edu.ph" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                    <input type="tel" value="09217172766" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+                  </div>
+                </div>
+      
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Comments (optional)</label>
+                <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" />
+              </div>
+      
+              <div class="flex items-center">
+                <input type="checkbox" id="subscribe" class="mr-2 accent-orange-500">
+                <label for="subscribe" class="text-sm text-gray-700">Subscribe me to the newsletter</label>
+              </div>
+      
+              <button type="submit" class="w-full mt-4 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-white font-semibold py-2 rounded-lg hover:from-[#FFB84C] hover:to-[#FF9D23] transition shadow-md">Book a table</button>
+            </form>
+          </div>
+      
+          <!-- Right side: Restaurant Image -->
+          <div class="md:w-1/3 w-full bg-orange-100 p-6 flex justify-center items-center">
+            <img src="../images/mangvel.png" alt="Burger" class="w-64 h-auto object-cover rounded-xl shadow-lg">
+          </div>
+        </div>
+      </section>
+      
+
+ <!--Footer Start-->
+
+ <footer class="bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] mt-16 text-white text-sm md:text-base">
+    <div class="container mx-auto px-4 md:px-6 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+  
+        <!-- Logo and About -->
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <img src="../images/mangvel.png" alt="Mang Vel's Logo" class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white">
+            <span class="text-xl md:text-2xl font-bold">Mang Vel's Restaurant</span>
+          </div>
+          <p class="opacity-90 leading-relaxed">
+            Serving authentic Filipino dishes with a modern twist. Located in the heart of Dasmariñas, Cavite and over the world.
+          </p>
+        </div>
+  
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg md:text-2xl font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-2 opacity-90">
+            <li><a href="../index.html" class="hover:underline">Home</a></li>
+            <li><a href="menu.html" class="hover:underline">Menu</a></li>
+            <li><a href="contact.html" class="hover:underline">Contact</a></li>
+            <li><a href="reservation.html" class="hover:underline">Reservation</a></li>
+            <li><a href="../possystem.html" class="hover:underline">POS System</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg md:text-2xl font-semibold mb-3">Contact</h3>
+          <ul class="space-y-2 opacity-90">
+            <li>Email: <a href="mailto:mangvelrestaurant@email.com" class="hover:underline">mangvelrestaurant@email.com</a></li>
+            <li>Phone: <a href="tel:09879656987" class="hover:underline">0987 965 6987</a></li>
+            <li>Address: Aguinaldo Highway, Dasmariñas, Cavite</li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <!-- Divider -->
+      <div class="border-t border-white border-opacity-30 my-6"></div>
+  
+      <!-- Developer Credit -->
+      <div class="text-center opacity-90 text-sm md:text-lg">
+        &copy; 2025 Mang Vel's Restaurant. All rights reserved.<br />
+        Designed and Developed by <span class="font-semibold">VelDevX</span>
+      </div>
+    </div>
+  </footer>
+
+   <!--Footer End-->
+  
+</body>
+</html>
+

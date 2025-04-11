@@ -1,0 +1,97 @@
+.text-shadow-normal {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Normal subtle shadow */
+}
+@keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Start 20px below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* End at normal position */
+    }
+  }
+  
+.animate-fade-up {
+    animation: fade-up 1s ease-out forwards;
+  }
+
+.perspective {
+    perspective: 1000px;
+  }
+
+/* Custom Animation for Carousel */
+@keyframes slideCars {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.testimonial-item {
+  animation: slideCars 30s linear infinite;
+  transition: all 0.3s ease;
+}
+.testimonial-container {
+  display: flex;
+  gap: 6px;
+  transition: transform 1s ease;
+}
+
+
+/* FAQ Start */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600;     /* font-semibold */
+  color: white;
+  background-image: linear-gradient(to bottom right, #FF9D23, #FFB84C);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.375rem; /* rounded-md */
+}
+
+
+.faq-icon {
+  font-size: 1.5rem; /* text-2xl */
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background-color: white;
+  font-size: 1rem; /* text-md */
+  color: #374151;  /* text-gray-700 */
+  margin: 0 1rem;
+  padding: 0 1rem; /* collapsed padding */
+  transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+
+
+
+
+.faq-answer.open {
+  max-height: 500px; /* or use something big like 999px */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* FAQ END */
+
+@media (max-width: 640px) {
+  .quantity-input {
+    width: 100% !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .add-to-order-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POS System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 p-8 font-sans" style="font-family: 'Signika', sans-serif;">
+
+    <!-- Back Button -->
+    <a href="index.html" class="inline-flex items-center text-white font-semibold px-4 py-2 rounded shadow mb-4 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] hover:opacity-90 transition-all duration-300 w-fit">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Home
+    </a>
+
+    <div class="container mx-auto flex flex-col lg:grid lg:grid-cols-3 gap-8">
+        <!-- Menu Section -->
+        <div class="lg:col-span-2">
+          <h1 class="text-6xl font-bold mb-6 text-center">Menu</h1>
+    
+          <!-- Menu Category Buttons -->
+          <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+            <button class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="all">All</button>
+            <button class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="Appetizers">Appetizers</button>
+            <button class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="Soups and Stews">Soups and Stews</button>
+            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="Main Dishes">Main Dishes</button>
+            <button class="bg-purple-500 text-white px-3 py-1 rounded-lg hover:bg-purple-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="Rice Dishes">Rice Dishes</button>
+            <button class="bg-pink-500 text-white px-3 py-1 rounded-lg hover:bg-pink-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="Desserts">Desserts</button>
+            <button class="bg-teal-500 text-white px-3 py-1 rounded-lg hover:bg-teal-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg" data-category="Beverages">Beverages</button>
+          </div>
+    
+          <!-- Menu Items -->
+          <div id="menu-items-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Menu items will be loaded here -->
+          </div>
+        </div>
+    
+        <!-- Ordered Items Section -->
+        <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow">
+          <h1 class="text-2xl font-bold mb-4">Ordered Items</h1>
+          <div id="ordered-items-list" class="space-y-3 mb-4 min-h-[200px]">
+            <!-- Ordered items will be added here -->
+          </div>
+          <hr class="my-4">
+          <div class="text-xl font-bold mb-4">
+            Total: <span id="total-amount">0</span> PHP
+          </div>
+          <div class="mt-4">
+            <label for="amount-paid" class="block text-sm font-medium text-gray-700 mb-1">Enter Amount Paid:</label>
+            <input type="number" id="amount-paid" name="amount-paid" class="w-full border rounded p-2 mb-3" placeholder="Enter amount">
+            <button id="pay-button" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              Pay!
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Alert Modal (unchanged) -->
+      <div id="custom-alert" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+        <div class="relative mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+          <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Notification</h3>
+            <div class="mt-2 px-7 py-3">
+              <p id="alert-message" class="text-sm text-gray-700 leading-relaxed">
+                Alert message goes here.
+              </p>
+            </div>
+            <div class="items-center px-4 py-3">
+              <button id="alert-close-btn" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- POS Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const orderedItemsList = document.getElementById('ordered-items-list');
+      const totalAmountElement = document.getElementById('total-amount');
+      const amountPaidInput = document.getElementById('amount-paid');
+      const payButton = document.getElementById('pay-button');
+      const menuItemsContainer = document.getElementById('menu-items-container');
+      const customAlert = document.getElementById('custom-alert');
+      const alertMessage = document.getElementById('alert-message');
+      const alertCloseBtn = document.getElementById('alert-close-btn');
+
+      let currentOrder = {};
+      let total = 0;
+      let fullMenuData = [];
+
+      function showAlert(message) {
+        alertMessage.innerHTML = message;
+        customAlert.classList.remove('hidden');
+      }
+
+      function hideAlert() {
+        customAlert.classList.add('hidden');
+      }
+
+      alertCloseBtn.addEventListener('click', hideAlert);
+      customAlert.addEventListener('click', (event) => {
+        if (event.target === customAlert) {
+          hideAlert();
+        }
+      });
+
+      function updateTotal() {
+        total = 0;
+        for (const itemName in currentOrder) {
+          const itemData = document.querySelector(`.add-to-order-btn[data-name="${itemName}"]`);
+          if (itemData) {
+            const price = parseFloat(itemData.dataset.price);
+            const quantity = currentOrder[itemName];
+            total += price * quantity;
+          }
+        }
+        totalAmountElement.textContent = total.toFixed(2);
+      }
+
+      function renderOrderedItems() {
+        orderedItemsList.innerHTML = '';
+        if (Object.keys(currentOrder).length === 0) {
+          orderedItemsList.innerHTML = '<p class="text-gray-500">No items ordered yet.</p>';
+        } else {
+          for (const itemName in currentOrder) {
+            const quantity = currentOrder[itemName];
+            const itemElement = document.createElement('div');
+            itemElement.className = 'flex justify-between items-center border p-2 rounded';
+            itemElement.innerHTML = `
+              <span>${itemName}</span>
+              <span class="text-green-600 font-medium">Qty: ${quantity}</span>
+            `;
+            orderedItemsList.appendChild(itemElement);
+          }
+        }
+      }
+
+      function displayMenuItems(category) {
+        menuItemsContainer.innerHTML = '';
+        const itemsToDisplay = category === 'all' ? fullMenuData : fullMenuData.filter(item => item.category === category);
+
+        if (itemsToDisplay.length === 0) {
+          menuItemsContainer.innerHTML = '<p class="text-gray-500 col-span-full text-center">No items found in this category.</p>';
+          return;
+        }
+
+        itemsToDisplay.forEach(item => {
+          const price = parseFloat(item.price.replace('₱', ''));
+          if (isNaN(price)) return;
+
+          const menuItemElement = document.createElement('div');
+          menuItemElement.className = 'bg-white p-4 rounded-lg shadow';
+          menuItemElement.innerHTML = `
+            <img src="${item.image_url}" alt="${item.foodname}" class="w-full h-32 object-cover rounded mb-2">
+            <h2 class="text-lg font-semibold">${item.foodname}</h2>
+            <p class="text-gray-600">${price.toFixed(2)} PHP</p>
+            <div class="mt-2 flex items-center">
+              <input type="number" value="1" min="1" max="99" class="quantity-input w-16 border rounded p-1 text-center mr-2">
+              <button class="add-to-order-btn bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-white font-bold py-1 px-3 rounded text-sm" data-name="${item.foodname}" data-price="${price}">
+                Add to order
+              </button>
+            </div>
+          `;
+          menuItemsContainer.appendChild(menuItemElement);
+        });
+
+        attachAddToOrderListeners();
+      }
+
+      function attachAddToOrderListeners() {
+        const buttons = document.querySelectorAll('.add-to-order-btn');
+        buttons.forEach(button => {
+          button.replaceWith(button.cloneNode(true));
+        });
+
+        document.querySelectorAll('.add-to-order-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            const itemName = button.dataset.name;
+            const price = parseFloat(button.dataset.price);
+            const quantityInput = button.previousElementSibling;
+            const quantity = parseInt(quantityInput.value, 10);
+
+            if (isNaN(quantity) || quantity < 1) {
+              showAlert("Please enter a valid quantity.");
+              return;
+            }
+
+            currentOrder[itemName] = (currentOrder[itemName] || 0) + quantity;
+            quantityInput.value = '1';
+            renderOrderedItems();
+            updateTotal();
+          });
+        });
+
+        document.querySelectorAll('.quantity-input').forEach(input => {
+          input.addEventListener('wheel', e => e.preventDefault());
+        });
+      }
+
+      async function loadMenuItems() {
+        try {
+          const response = await fetch('restaurantdata.json');
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          fullMenuData = await response.json();
+          displayMenuItems('all');
+
+          document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+              const category = button.dataset.category;
+              displayMenuItems(category);
+            });
+          });
+
+        } catch (error) {
+          console.error("Could not load menu items:", error);
+          menuItemsContainer.innerHTML = '<p class="text-red-500 col-span-full">Error loading menu items. Please try again later.</p>';
+        }
+      }
+
+      payButton.addEventListener('click', () => {
+        const amountPaid = parseFloat(amountPaidInput.value);
+
+        if (isNaN(amountPaid) || amountPaid <= 0) {
+          showAlert("❌ Please enter a valid amount paid.");
+          return;
+        }
+
+        if (total === 0) {
+          showAlert("🛒 Please add items to the order first.");
+          return;
+        }
+
+        if (amountPaid < total) {
+          showAlert("🚫 Not enough balance. Please try again.");
+        } else {
+          const change = amountPaid - total;
+          showAlert(`✅ Payment successful!<br>Your change is <strong>${change.toFixed(2)} PHP</strong>`);
+          currentOrder = {};
+          total = 0;
+          amountPaidInput.value = '';
+          renderOrderedItems();
+          updateTotal();
+        }
+      });
+
+      renderOrderedItems();
+      loadMenuItems();
+    });
+  </script>
+
+<script src="script.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://unpkg.com/alpinejs" defer></script>
+
+</body>
+
+</html>
+
+    
+

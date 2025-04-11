@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home- Mang Vel's Restaurant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body style="font-family: 'Signika', sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; font-variation-settings: 'GRAD' 0; ">
+
+<!-- Navbar -->
+<nav class="bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] shadow-md fixed w-full z-50 h-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Logo and Text Container -->
+        <a href="index.html" class="flex items-center space-x-3 sm:space-x-4">
+          <img src="images/mangvel.png" alt="Mang Vel Restaurant logo" class="h-16 sm:h-20">
+          <span class="text-2xl font-semibold text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">MANG VEL'S RESTAURANT</span>
+        </a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" class="lg:hidden p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+  
+        <!-- Desktop Menu -->
+        <ul class="hidden lg:flex justify-center space-x-6 w-full">
+          <li><a href="index.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Home</a></li>
+          <li><a href="menu.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Menu</a></li>
+          <li><a href="htmlfiles/about.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">About</a></li>
+          <li><a href="htmlfiles/service.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Services</a></li>
+          
+          <!-- Promotions Dropdown -->
+          <li class="relative" id="promotions-menu">
+            <a href="#" class="text-white hover:text-gray-900 flex items-center space-x-2 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);" id="promotions-link">
+              <span>Promotions</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white group-hover:text-gray-900 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <!-- Desktop Dropdown Menu -->
+            <ul class="absolute left-0 hidden mt-2 space-y-2 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] shadow-lg " id="dropdown-menu">
+              <li><a href="htmlfiles/promo.html" class="block px-4 py-2 text-white hover:text-gray-900 font-semibold " style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Promos</a></li>
+              <li><a href="htmlfiles/giftcard.html" class="block px-4 py-2 text-white hover:text-gray-900 font-semibold"  style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Gift Cards</a></li>
+            </ul>
+          </li>
+          <li><a href="htmlfiles/location.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Locations</a></li>
+          <li><a href="htmlfiles/contact.html" class="text-white hover:text-gray-900 font-semibold text-shadow text-lg sm:text-xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Contact</a></li>
+        </ul>
+  
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu (Full Screen and Slide In Effect from Right) -->
+  <ul id="mobile-menu" class="hidden fixed inset-0 flex-col space-y-6 bg-white py-6 px-8 shadow-md lg:hidden transition-all duration-300 z-50 transform translate-x-full">
+    
+    <!-- Close Button (X) -->
+    <li>
+      <button id="mobile-menu-close" class="absolute top-6 right-6 text-gray-700 text-4xl">
+        &times; <!-- X icon -->
+      </button>
+    </li>
+  
+    <!-- Menu Items -->
+    <li class="px-4 py-2">
+      <a href="index.html" class="text-gray-700 hover:text-gray-900 text-lg">Home</a>
+    </li>
+    <li class="px-4 py-2">
+      <a href="menu.html" class="text-gray-700 hover:text-gray-900 text-lg">Menu</a>
+    </li>
+    <li class="px-4 py-2">
+      <a href="htmlfiles/about.html" class="text-gray-700 hover:text-gray-900 text-lg">About</a>
+    </li>
+    <li class="px-4 py-2">
+      <a href="htmlfiles/service.html" class="text-gray-700 hover:text-gray-900 text-lg">Services</a>
+    </li>
+  
+    <!-- Mobile Promotions Dropdown -->
+    <li class="relative px-4 py-2">
+      <a href="#" class="text-gray-700 hover:text-gray-900 flex items-center space-x-2" id="mobile-promotions-link">
+        <span class="text-lg">Promotions</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-700 group-hover:text-gray-900 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </a>
+      <!-- Mobile Dropdown Menu -->
+      <ul class="absolute left-0 hidden mt-2 space-y-2 bg-white shadow-lg" id="mobile-dropdown-menu">
+        <li><a href="htmlfiles/promo.html" class="block px-4 py-2 text-gray-700 hover:text-gray-900">Promos</a></li>
+        <li><a href="htmlfiles/giftcard.html" class="block px-4 py-2 text-gray-700 hover:text-gray-900">Gift Cards</a></li>
+      </ul>
+    </li>
+  
+    <li class="px-4 py-2">
+      <a href="htmlfiles/location.html" class="text-gray-700 hover:text-gray-900 text-lg">Locations</a>
+    </li>
+    <li class="px-4 py-2">
+      <a href="htmlfiles/contact.html" class="text-gray-700 hover:text-gray-900 text-lg">Contact</a>
+    </li>
+  
+  </ul>
+  
+  <!-- End Navbar -->
+
+
+<!-- Home Section with Carousel -->
+<div id="controls-carousel" class="relative w-full h-screen overflow-hidden">
+    <!-- Carousel Items -->
+    <div class="absolute inset-0">
+        <div data-carousel-item class="block">
+            <img src="https://redplatter.ph/restaurant/wp-content/uploads/2016/08/RP_Bicolano-Dishes-2000px-1294px.jpg" 
+                alt="Cooling Solutions" class="w-full h-screen sm:h-screen object-cover">
+            <!-- Overlay Text -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-50 text-center px-3 sm:px-5">
+                <h1 id="heading" class="text-3xl sm:text-8xl font-bold text-shadow-lg animate-rise " style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Authentic Filipino Food, Crafted with Love</h1>
+                <p id="paragraph" class="mt-2 text-lg sm:text-2xl text-shadow-md animate-fade">Experience the rich flavors of the Philippines in every dish, served in a family-friendly atmosphere with a cozy, tropical vibe. A perfect spot for everyone to savor traditional Filipino cuisine and unforgettable moments.</p>
+                <a id="menuButton" href="#" class="bg-yellow-500 text-white px-5 sm:px-6 py-3 rounded-lg text-lg mt-4 inline-block hover:bg-yellow-600 transition shadow-lg hover:shadow-xl animate-pop">
+                    Discover Our Menu
+                </a>
+            </div>
+        </div>
+        
+        <div data-carousel-item class="hidden">
+            <img src="https://shef.com/homemade-food/wp-content/uploads/filipino-food-philippines-history-homemade.jpeg" 
+                alt="Cooling Installation" class="w-full h-screen sm:h-screen object-cover">
+            <!-- Overlay Text -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-50 text-center px-3 sm:px-5">
+                <h1 class="text-3xl sm:text-8xl font-bold text-shadow-lg" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">A Taste of the Philippines: A Culinary Journey</h1>
+                <p class="mt-2 text-lg sm:text-2xl text-shadow-md">This vibrant spread showcases the rich and diverse flavors of Filipino cuisine. From savory grilled meats to flavorful noodle dishes and refreshing sides, each plate tells a story of tradition and celebration. Indulge in the unique blend of sweet, sour, and salty that makes Filipino food a true culinary adventure.</p>
+                <a href="#" class="bg-yellow-500 text-white px-5 sm:px-6 py-3 rounded-lg text-lg mt-4 inline-block hover:bg-yellow-600 transition shadow-lg hover:shadow-xl">
+                    Discover Our Menu
+                </a>
+            </div>
+
+        </div>
+        <div data-carousel-item class="hidden">
+            <img src="https://kahibalo.com/wp-content/uploads/2024/02/boodle-fight-kamayan-philippines-kahibalo-foundation-5.jpg" 
+                alt="Energy Efficiency" class="w-full h-screen sm:h-screen object-cover">
+             <!-- Overlay Text -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-50 text-center px-3 sm:px-5">
+                <h1 class="text-3xl sm:text-8xl font-bold text-shadow-lg" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Boodle Fight: A Feast for the Senses</h1>
+                <p class="mt-2 text-lg sm:text-2xl text-shadow-md">Dive into the heart of Filipino communal dining with a Boodle Fight! This traditional feast is more than just a meal; it's an experience. Food is laid out on banana leaves, encouraging everyone to eat with their hands, fostering camaraderie and celebration. Our spread includes a variety of grilled meats, seafood, rice, and fresh fruits, all designed to be enjoyed together. Join us and experience the joy of sharing and the rich flavors of Filipino cuisine.</p>
+                <a href="#" class="bg-yellow-500 text-white px-5 sm:px-6 py-3 rounded-lg text-lg mt-4 inline-block hover:bg-yellow-600 transition shadow-lg hover:shadow-xl">
+                    Join the Boodle!
+                </a>
+            </div>
+
+        </div>
+        <div data-carousel-item class="hidden">
+            <img src="https://koala.sh/api/image/v2-5rg86-3ji6h.jpg?width=1344&height=768&dream" 
+                alt="24/7 Support" class="w-full h-screen sm:h-screen object-cover">
+
+            <!-- Overlay Text -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-50 text-center px-3 sm:px-5">
+                <h1 class="text-3xl sm:text-8xl font-bold text-shadow-lg" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);" >Catering Services for Your Special Occasions!</h1>
+                <p class="mt-2 text-lg sm:text-2xl text-shadow-md">We prepare delicious Filipino cuisine for your events. From classic dishes to modern twists, your guests will surely love our food. Inquire now!</p>
+                <a href="#" class="bg-yellow-500 text-white px-5 sm:px-6 py-3 rounded-lg text-lg mt-4 inline-block hover:bg-yellow-600 transition shadow-lg hover:shadow-xl">
+                    Inquire About Catering
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Dot Navigation -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        <button data-carousel-dot class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition"></button>
+        <button data-carousel-dot class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition"></button>
+        <button data-carousel-dot class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition"></button>
+        <button data-carousel-dot class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition"></button>
+    </div>
+</div>
+
+<!--Home Section End Here-->
+
+<!-- Carousel Container -->
+<div class="relative w-full max-w-7xl mx-auto mt-10">
+    <!-- Carousel Wrapper -->
+    <div class="relative overflow-hidden">
+        <!-- Carousel Images -->
+        <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+            <!-- Image 1 -->
+            <div class="w-full flex-shrink-0">
+                <img src="images/bestseller/1.jpg" alt="Best Seller 1" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+            <!-- Image 2 -->
+            <div class="w-full flex-shrink-0">
+                <img src="images/bestseller/2.jpg" alt="Best Seller 2" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+            <!-- Image 3 -->
+            <div class="w-full flex-shrink-0">
+                <img src="images/bestseller/3.jpg" alt="Best Seller 3" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+        </div>
+
+        <!-- Carousel Navigation (Left and Right Arrows) -->
+        <button id="prev-button" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700">
+            &#60;
+        </button>
+        
+        <button id="next-button" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700">
+            &#62;
+        </button>        
+    </div>
+</div>
+
+<!--Menu Start-->
+<section>
+    <div class="container mx-auto px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:py-16">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6 mt-8 sm:text-5xl md:text-6xl lg:text-8xl sm:mb-8">
+          Our Menu
+        </h1>
+      
+        <!-- Menu Category Buttons -->
+        <div class="flex flex-wrap justify-center space-x-2 mb-8 sm:space-x-4 sm:mb-12">
+          <button class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="all">All</button>
+          <button class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="Appetizers">Appetizers</button>
+          <button class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="Soups and Stews">Soups and Stews</button>
+          <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="Main Dishes">Main Dishes</button>
+          <button class="bg-purple-500 text-white px-3 py-1 rounded-lg hover:bg-purple-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="Rice Dishes">Rice Dishes</button>
+          <button class="bg-pink-500 text-white px-3 py-1 rounded-lg hover:bg-pink-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="Desserts">Desserts</button>
+          <button class="bg-teal-500 text-white px-3 py-1 rounded-lg hover:bg-teal-600 transition-all duration-300 filter-btn text-sm sm:px-4 sm:py-2 md:text-lg mt-2" data-category="Beverages">Beverages</button>
+        </div>
+      
+        <!-- Menu Items (Grid Layout) -->
+        <div id="menu" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6 sm:gap-6 sm:py-8 md:gap-8 lg:gap-12">
+          <!-- Menu items will go here -->
+        </div>
+      </div>
+</section>
+
+<!--Menu End-->
+
+<!--About Start--> 
+<div class="bg-white text-gray-800 h-auto w-full">
+
+    <!-- Section with gradient background -->
+    <section class="bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-white text-center py-6 text-4xl font-bold">
+        About Mang Vel's Restaurant
+    </section>
+    <!-- Flex container with left-aligned text and right-aligned image -->
+    <div class="flex flex-col md:flex-row items-center justify-center py-6 px-8">
+        <!-- Left side: Text content -->
+        <div class="w-full md:w-1/2 text-md mb-6 md:mb-0">
+            <h1 class="text-3xl sm:text-6xl font-bold text-center text-gray-800 mb-6 mt-8 sm:mb-8">
+                About Us
+            </h1>
+            <p>
+                Mang Vel's Restaurant is one of the largest and most beloved restaurants in the Philippines, operating a network of more than 1,500 locations in 17 countries. As a dominant market leader in the Philippines, Mang Vel's Restaurant enjoys the lion's share of the local market, surpassing all other multinational restaurant brands in the country combined. With a strict adherence to the highest standards of food quality, service, and cleanliness, Mang Vel's Restaurant serves great-tasting, high-quality, and affordable food products, including its popular Filipino cuisine offers such as "Sisig", "Halo-Halo", "Lechon Kawali", and many other delicious dishes. <br>
+            </p>
+            <p class="mt-10">
+                Mang Vel's Restaurant has embarked on an aggressive international expansion plan, with more than 270 international branches across the United States, Canada, Hong Kong, Macau, Brunei, Vietnam, Singapore, Malaysia, Saudi Arabia, United Arab Emirates, Qatar, Oman, Kuwait, Bahrain, Italy, Spain, and the United Kingdom.
+            </p>
+        </div>
+
+        <!-- Right side: Image (add your image URL here) -->
+        <div class="w-50">
+            <img src="images/mangvel.png" alt="Mang Vel's Restaurant" class="w-full h-auto rounded-lg">
+            <p class="text-center italic text-gray-600 mt-2">"This is the logo of Mang Vel's Restaurant"</p>
+        </div>
+
+    </div>
+
+    <!-- Flex container with left-aligned text and right-aligned image -->
+    <div class="flex flex-col md:flex-row items-center justify-center py-6 px-8">
+        <!-- Left side: Image (adjusted size) -->
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/56/71/59/atmosphere.jpg" alt="Mang Vel's Restaurant" class="w-full h-auto rounded-lg">
+        </div>
+
+        <!-- Right side: Text content -->
+        <div class="w-full md:w-1/2 text-md ml-0 md:ml-10">
+            <h1 class="text-3xl sm:text-6xl font-bold text-center text-gray-800 mb-6 mt-8 sm:mb-8">
+                Our Business
+            </h1>
+            <p>
+                Mang Vel's Restaurant’s (“MVR” or the “Company”) core business is the development, operation, and franchising of its quick-service restaurant brands. It offers a wide variety of affordable and delicious dishes and great-tasting food prepared to satisfy customers of all ages and from all walks of life. <br>
+            </p>
+            <p class="mt-10">
+                Food quality, service, price-value relationship, store location and ambiance, and efficient operations continue to be critical elements of the Company’s success in the quick-service restaurant industry.
+            </p>
+            <p class="mt-10">
+                Click to view more information about our Core Values and about Our Mission & Vision.
+            </p>
+
+            <div class="mt-4 flex justify-center md:justify-start space-x-4">
+                <button class="bg-gradient-to-r from-[#FF9D23] to-[#FFB84C] text-white px-5 sm:px-6 py-3 rounded-lg text-lg inline-block hover:scale-105 transition-all transform shadow-lg hover:shadow-2xl text-center">
+                    Core Values
+                </button>
+                <button class="bg-gradient-to-r from-[#FF9D23] to-[#FFB84C] text-white px-5 sm:px-6 py-3 rounded-lg text-lg inline-block hover:scale-105 transition-all transform shadow-lg hover:shadow-2xl text-center">
+                    Mission & Vision
+                </button>
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <!-- Flex container with left-aligned text and right-aligned image -->
+    <div class="flex flex-col md:flex-row items-center justify-center py-6 px-8">
+        <!-- Left side: Text content -->
+        <div class="w-full md:w-1/2 text-md mb-6 md:mb-0">
+            <h1 class="text-3xl sm:text-6xl font-bold text-center text-gray-800 mb-6 mt-8 sm:mb-8">
+                FSC Standards
+            </h1>
+            <p class="pl-10 pr-10">
+                Mang Vel's Restaurant’s phenomenal growth owes much to its strict and committed adherence to high standards as symbolized by “F.S.C.”: Food (F) served to the public must meet the restaurant’s excellence standards or it will not be served at all; the Service (S) must be fast and courteous; Cleanliness (C), from kitchen to utensils, must always be maintained. Mang Vel's Restaurant is proud of its employees who carry out their jobs. <br>
+            </p>
+            <button class="mt-10 ml-9 bg-gradient-to-r from-[#FF9D23] to-[#FFB84C] text-white px-5 sm:px-6 py-3 rounded-lg text-lg inline-block hover:scale-105 transition-all transform shadow-lg hover:shadow-2xl text-center">
+                View Our Safety Measures
+            </button>
+            
+        </div>
+
+        <!-- Right side: Image (add your image URL here) -->
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+            <img src="https://media.istockphoto.com/id/1413475324/photo/waiter-cleaning-a-dining-table-at-a-restaurant.jpg?s=612x612&w=0&k=20&c=nEc8nzF7vEnjtdqOU2oWIywno8VJ0KG0MSYospqqgXc=" alt="Mang Vel's Restaurant" class="w-full h-auto rounded-lg">
+        </div>
+
+    </div>
+
+</div>
+<!--About End--> 
+
+<!-- Chef Section Container  Start-->
+<div class="container mx-auto px-6 py-16">
+
+    <!-- Title and Description for Chef -->
+    <div class="text-center mb-12 mt-20 border-t-2 border-gray-300 pt-12">
+      <h1 class="sm:text-6xl text-4xl font-bold text-gray-800">Meet Our Talented Chefs</h1>
+      <p class="mt-5 text-gray-600 max-w-2xl mx-auto">
+        Our chefs are passionate about Filipino cuisine, blending traditional flavors with innovative techniques to create unforgettable dining experiences. Get to know the culinary masterminds behind your favorite dishes!
+      </p>
+    </div>
+    
+    <!-- Carousel Section -->
+    <div x-data="carouselchef()" class="w-full max-w-6xl mx-auto perspective px-4">
+    <!-- Left Arrow -->
+    <button @click="prev()" class="absolute top-1/2 -left-6 transform -translate-y-1/2 z-10 bg-yellow-400 hover:bg-yellow-500 shadow p-4 h-20 rounded-full text-xl text-white">
+      &#8592;
+    </button>
+      <div class="relative">
+  
+        <!-- Carousel Cards -->
+        <div class="flex justify-center items-center overflow-hidden h-[32rem] relative">
+          <template x-for="(chef, i) in chefs" :key="i">
+            <div
+              class="absolute transition-all duration-500 ease-in-out"
+              :class="getClass(i)"
+            >
+              <div class="w-64 flex flex-col items-center relative">
+                  <div class="w-64 flex flex-col items-center relative">
+                      <!-- Floating Image -->
+                      <img 
+                        :src="chef.image" 
+                        alt="Chef" 
+                        class="w-40 h-40 rounded-full object-contain border-4 border-white shadow-lg absolute -top-20 z-20 bg-white transition-transform duration-500 hover:scale-110"
+                      >
+                    
+                      <!-- Info Card -->
+                      <div class="bg-white mt-20 pt-24 rounded-2xl shadow-xl w-full h-72 flex flex-col items-center text-center px-4">
+                        <h2 class="text-lg font-semibold text-gray-800" x-text="chef.name"></h2>
+                        <p class="text-sm text-gray-500 mt-1" x-text="chef.specialty"></p>
+                    
+                        <!-- Star Rating -->
+                        <div class="mt-3 flex justify-center text-yellow-400 text-lg">
+                          <template x-for="star in 5">
+                            <span :class="star <= chef.rating ? 'text-yellow-400' : 'text-gray-300'">★</span>
+                          </template>
+                        </div>
+                    
+                        <!-- Learn More Button -->
+                        <button 
+                          class="mt-4 bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-medium py-2 px-4 rounded-full transition"
+                        >
+                          Learn More
+                        </button>
+                      </div>
+                    </div>
+            </div>
+          </template>
+        </div>
+  
+        
+        <!-- Right Arrow -->
+        <button @click="next()" class="absolute top-1/2 -right-6 transform -translate-y-1/2 z-10 bg-yellow-400 hover:bg-yellow-500 shadow p-4 h-20 rounded-full text-xl text-white">
+          &#8594;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chef Section Container  End-->
+
+
+<!-- Contact Start -->
+<div class="container mx-auto px-4 py-12 mt-10 border-t-2 border-gray-300">
+    <section>
+        <h2 class="text-5xl font-bold mb-2">Contact Us</h2>
+        <p class="text-gray-600 mb-8">We would love to hear from you. Feel free to complete the contact form or use the details below:</p>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Contact Details -->
+          <div class="space-y-6">
+            <div>
+              <p class="text-gray-500">Email</p>
+              <p class="font-medium bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-transparent bg-clip-text">
+                mangvelrestaurant@email.com
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500">Phone</p>
+              <p class="font-medium bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-transparent bg-clip-text">
+                09879656987
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500">Location</p>
+              <p class="text-gray-700">Aguinaldo Highway, Dasmarinas, Cavite</p>
+            </div>
+          </div>
+        
+          <!-- Contact Form -->
+          <form class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <input type="text" placeholder="Name" class="border border-gray-300 rounded p-2 w-full" />
+              <input type="email" placeholder="Email" class="border border-gray-300 rounded p-2 w-full" />
+            </div>
+            <textarea rows="5" placeholder="Message" class="border border-gray-300 rounded p-2 w-full"></textarea>
+            <button type="submit" class="text-white px-6 py-2 rounded w-full bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] hover:opacity-90">
+              Send Message
+            </button>
+          </form>
+        </div>
+        
+  
+      <!-- Image Gallery -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="https://marketplace.canva.com/EAGKDhXEhoY/1/0/1600w/canva-brown-and-white-simple-modern-professional-catering-logo-Dvz9NG3gqk0.jpg" alt="partnership1" class="rounded shadow-sm">
+        <img src="https://img.freepik.com/free-vector/vegan-food-restaurant-logo-template_23-2148661988.jpg" alt="partnership2" class="rounded shadow-sm">
+        <img src="https://images-platform.99static.com//9rxq2L5FfiA5sFMxSxkpFWSaxLo=/0x0:1000x1000/fit-in/500x500/99designs-contests-attachments/87/87659/attachment_87659723" alt="partnership3" class="rounded shadow-sm">
+        <img src="https://marketplace.canva.com/EAF0yv-amB0/1/0/1600w/canva-black-flat-illustrative-food-%26-drink-logo-dlwX4fFc2-I.jpg" alt="partnership4" class="rounded shadow-sm">
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact End -->
+
+  <section class=" flex items-center justify-center pb-36">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-6xl w-full flex flex-col md:flex-row transition-transform hover:scale-[1.01] duration-300 border-2 border-orange-300">
+      
+      <!-- Left side: Booking Form -->
+      <div class="md:w-2/3 w-full p-8">
+        <form class="space-y-5">
+          <div class="mb-6">
+            <h2 class="text-4xl font-extrabold text-gray-800">🍽️ Mang Vel's Reservation</h2>
+            <p class="text-sm text-gray-500 mt-1">Book your seat now and experience delightful meals!</p>
+          </div>
+  
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Date *</label>
+              <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Time *</label>
+              <input type="time" value="18:00" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+            </div>
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">People *</label>
+            <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required>
+              <option>1 person</option>
+              <option>2 persons</option>
+              <option>3 persons</option>
+              <option selected>4 persons</option>
+              <option>5+ persons</option>
+            </select>
+          </div>
+  
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">First name *</label>
+              <input type="text" value="John Vel" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
+              <input type="text" value="Llacuna" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+            </div>
+          </div>
+  
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <input type="email" value="johnvel.llacuna.cvt@eac.edu.ph" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+              <input type="tel" value="09217172766" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" required />
+            </div>
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Comments (optional)</label>
+            <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-400 outline-none" />
+          </div>
+  
+          <div class="flex items-center">
+            <input type="checkbox" id="subscribe" class="mr-2 accent-orange-500">
+            <label for="subscribe" class="text-sm text-gray-700">Subscribe me to the newsletter</label>
+          </div>
+  
+          <button type="submit" class="w-full mt-4 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-white font-semibold py-2 rounded-lg hover:from-[#FFB84C] hover:to-[#FF9D23] transition shadow-md">Book a table</button>
+        </form>
+      </div>
+  
+      <!-- Right side: Restaurant Image -->
+      <div class="md:w-1/3 w-full bg-orange-100 p-6 flex justify-center items-center">
+        <img src="../images/mangvel.png" alt="Burger" class="w-64 h-auto object-cover rounded-xl shadow-lg">
+      </div>
+    </div>
+  </section>
+
+  <!--Customer Comment Start-->
+  <section class="w-full max-w-6xl mx-auto py-8">
+    <h2 class="text-4xl font-bold text-center mb-8 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-transparent bg-clip-text" >
+      ❤️ What Our Customers Say
+    </h2>
+
+    <!-- Testimonial Carousel -->
+    <div class="relative flex items-center justify-center overflow-hidden">
+      <ul class="testimonial-container flex gap-6">
+        <!-- Duplicate the testimonials to make the carousel loop -->
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Reyes" class="w-20 h-20 rounded-full border-4 border-orange-100 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Grabe, ang sarap ng kare-kare! Parang lutong bahay talaga. Babalik kami ng pamilya ko. ❤️”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Ana Reyes</h3>
+        </li>
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jerome Santos" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Best halo-halo in town! Lalo na tuwing summer—solid ang tamis at linamnam!”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Jerome Santos</h3>
+        </li>
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Liza Dela Cruz" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Napaka accommodating ng staff! Plus, sulit na sulit ang bilao package. Perfect for birthdays!”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Liza Dela Cruz</h3>
+        </li>
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Carlos Rivera" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Legit ang crispy pata! Crunchy sa labas, juicy sa loob. Highly recommended!”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Carlos Rivera</h3>
+        </li>
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Maricel Torres" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Nostalgic ang ambiance. Parang nasa probinsya lang habang kumakain ng paboritong ulam.”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Maricel Torres</h3>
+        </li>
+
+        <!-- Duplicated Testimonials (to create a seamless loop) -->
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Reyes" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Grabe, ang sarap ng kare-kare! Parang lutong bahay talaga. Babalik kami ng pamilya ko. ❤️”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Ana Reyes</h3>
+        </li>
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jerome Santos" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Best halo-halo in town! Lalo na tuwing summer—solid ang tamis at linamnam!”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Jerome Santos</h3>
+        </li>
+        <li class="testimonial-item bg-white p-6 rounded-xl shadow-lg w-80 h-72 flex flex-col justify-between text-center">
+          <div class="flex justify-center mb-4">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Liza Dela Cruz" class="w-20 h-20 rounded-full border-4 border-orange-500 shadow-md" />
+          </div>
+          <p class="italic text-base text-gray-700 mb-4">“Napaka accommodating ng staff! Plus, sulit na sulit ang bilao package. Perfect for birthdays!”</p>
+          <div class="flex justify-center mb-4">
+            <!-- Star rating -->
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-yellow-500">&#9733;</span>
+            <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+          </div>
+          <h3 class="font-bold text-orange-600 text-xl">Liza Dela Cruz</h3>
+        </li>
+      </ul>
+    </div>
+
+    </section>
+
+  <!--Customer Comment End-->
+
+  <!-- FAQ Section -->
+  <section id="FAQ" class="py-16 px-4">
+    <div class="max-w-3xl mx-auto text-center mb-8">
+      <h2 class="text-4xl font-bold text-center mb-2 bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] bg-clip-text text-transparent">
+        Frequently Asked Questions (FAQs)
+      </h2>
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-4">
+      
+      <!-- FAQ 1 -->
+      <div class="faq-item border border-gray-300 rounded-lg shadow-md overflow-hidden">
+        <input type="checkbox" id="faq1" class="hidden peer">
+        <label for="faq1" class="faq-question peer-checked:bg-gradient-to-br from-[#FF9D23] to-[#FFB84C]">
+          <span>What time does Mang Vel's Restaurant open?</span>
+          <span class="faq-icon peer-checked:rotate-45">+</span>
+        </label>
+        <div class="faq-answer peer-checked:max-h-96">
+          <p class="mt-2 text-gray-600 leading-relaxed">
+            Mang Vel's opens daily from 10:00 AM to 9:00 PM, so you can enjoy your favorite Filipino dishes for lunch or dinner!
+        </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item border border-gray-300 rounded-lg shadow-md overflow-hidden">
+        <input type="checkbox" id="faq2" class="hidden peer">
+        <label for="faq2" class="faq-question peer-checked:bg-gradient-to-br from-[#FF9D23] to-[#FFB84C]">
+          <span>What kind of flavors does Mang Vel's serve?</span>
+          <span class="faq-icon peer-checked:rotate-45">+</span>
+        </label>
+        <div class="faq-answer peer-checked:max-h-32">
+          <p class="mt-2 text-gray-600 leading-relaxed">
+            We serve authentic Filipino flavors — from the savory richness of adobo and kare-kare to the sweet goodness of halo-halo. Every dish is made with love and traditional spices.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item border border-gray-300 rounded-lg shadow-md overflow-hidden">
+        <input type="checkbox" id="faq3" class="hidden peer">
+        <label for="faq3" class="faq-question peer-checked:bg-gradient-to-br from-[#FF9D23] to-[#FFB84C]">
+          <span>Is the food at Mang Vel's safe?</span>
+          <span class="faq-icon peer-checked:rotate-45">+</span>
+        </label>
+        <div class="faq-answer peer-checked:max-h-32">
+          <p class="px-5 py-3 text-gray-700">
+            Absolutely. We follow strict food safety standards and hygiene practices to ensure that every meal is safe, fresh, and delicious.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="#" class="text-[#FF9D23] font-semibold underline hover:text-[#FFB84C] transition">
+        More Questions & Answers
+      </a>
+    </div>
+  </section>
+
+  
+  <!--Footer Start-->
+
+  <footer class="bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] mt-16 text-white text-sm md:text-base">
+    <div class="container mx-auto px-4 md:px-6 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+  
+        <!-- Logo and About -->
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <img src="images/mangvel.png" alt="Mang Vel's Logo" class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white">
+            <span class="text-xl md:text-2xl font-bold">Mang Vel's Restaurant</span>
+          </div>
+          <p class="opacity-90 leading-relaxed">
+            Serving authentic Filipino dishes with a modern twist. Located in the heart of Dasmariñas, Cavite and over the world.
+          </p>
+        </div>
+  
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg md:text-2xl font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-2 opacity-90">
+            <li><a href="index.html" class="hover:underline">Home</a></li>
+            <li><a href="menu.html" class="hover:underline">Menu</a></li>
+            <li><a href="htmlfiles/contact.html" class="hover:underline">Contact</a></li>
+            <li><a href="htmlfiles/reservation.html" class="hover:underline">Reservation</a></li>
+            <li><a href="possystem.html" class="hover:underline">POS System</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg md:text-2xl font-semibold mb-3">Contact</h3>
+          <ul class="space-y-2 opacity-90">
+            <li>Email: <a href="mailto:mangvelrestaurant@email.com" class="hover:underline">mangvelrestaurant@email.com</a></li>
+            <li>Phone: <a href="tel:09879656987" class="hover:underline">0987 965 6987</a></li>
+            <li>Address: Aguinaldo Highway, Dasmariñas, Cavite</li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <!-- Divider -->
+      <div class="border-t border-white border-opacity-30 my-6"></div>
+  
+      <!-- Developer Credit -->
+      <div class="text-center opacity-90 text-sm md:text-lg">
+        &copy; 2025 Mang Vel's Restaurant. All rights reserved.<br />
+        Designed and Developed by <span class="font-semibold">VelDevX</span>
+      </div>
+    </div>
+  </footer>
+
+   <!--Footer End-->
+  
+
+</body>
+<script src="script.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://unpkg.com/alpinejs" defer></script>
+
+</html>
