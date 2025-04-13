@@ -156,9 +156,12 @@ fetch('restaurantdata.json')
                     <div class="flex-grow"></div>
 
                     <!-- Order Now Button with Gradient -->
-                    <button class="mt-4 w-full bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-white py-2 rounded-lg hover:scale-105 hover:from-[#FFB84C] hover:to-[#FF9D23] transition duration-300 transform focus:outline-none shadow-md hover:shadow-lg">
+                    <button 
+                        class="mt-4 w-full bg-gradient-to-br from-[#FF9D23] to-[#FFB84C] text-white py-2 rounded-lg hover:scale-105 hover:from-[#FFB84C] hover:to-[#FF9D23] transition duration-300 transform focus:outline-none shadow-md hover:shadow-lg"
+                        onclick="window.location.href='possystem.html'">
                         Order Now
                     </button>
+
                 </div>
             </div>
 
